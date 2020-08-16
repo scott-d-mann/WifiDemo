@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WifiDemo</string>
+    <string name="wifi_state">Wifi State</string>
+    <string name="is5ghzbandsupported_returns_unknown">is5GHzBandSupported returns unknown</string>
+    <string name="getwifistate_returns_unknown">getWifiState() returns unknown</string>
+    <string name="iswifienabled_returns_unknown">isWifiEnabled() returns unknown</string>
+    <string name="update_wifi_state">Update Wifi State</string>
+</resources>
