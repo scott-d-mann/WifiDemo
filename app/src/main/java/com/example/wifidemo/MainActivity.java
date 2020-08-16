@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void isWifiEnabled() {
-        if (wifiManager.is5GHzBandSupported()) {
+        if (wifiManager.isWifiEnabled()) {
             isEnabledtv.setText("isWifiEnabled() returns true");
         } else {
             isEnabledtv.setText("isWifiEnabled() returns false");
