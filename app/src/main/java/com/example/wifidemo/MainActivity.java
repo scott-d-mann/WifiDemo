@@ -9,12 +9,14 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     BroadcastReceiver wifiScanReceiver;
 
+    List<String> wifiNetworks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +85,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void scanSuccess() {
         List<ScanResult> results = wifiManager.getScanResults();
+        wifiNetworks.clear();
+
+
+        for (ScanResult result : results) {
+            wifiNetworks.add(result.SSID); // Add the SSID of the network to the list
+        }
+
         Log.d(TAG, results.toString());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, wifiNetworks);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
     }
 
     private void scanFailure() {
